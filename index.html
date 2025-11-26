@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One and Only One Shoe Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f2f2f2;
+        }
+        h1 {
+            text-align: center;
+        }
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .products {
+            display: none;
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart {
+            margin-top: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .add {
+            cursor: pointer;
+            padding: 5px 10px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>One and Only One Shoe Store</h1>
+
+    <div class="buttons">
+        <button onclick="showProducts('nike')">Nike</button>
+        <button onclick="showProducts('jordan')">Jordan</button>
+    </div>
+
+    <div id="nike" class="products">
+        <h2>Nike Shoes</h2>
+        <div class="item">Nike Air Max Plus Men's - $999 <button class="add" onclick="addToCart('Nike Air Max Plus', 999)">Add to Cart</button></div>
+        <div class="item">Nike Classic Cortez Forrest Gump 2024 Men's - $699 <button class="add" onclick="addToCart('Nike Classic Cortez', 699)">Add to Cart</button></div>
+        <div class="item">Nike Blazer Mid 77 Vintage Men's Shoes - $499 <button class="add" onclick="addToCart('Nike Blazer Mid 77', 499)">Add to Cart</button></div>
+        <div class="item">Nike Air Max 97 Gray and Black - $799 <button class="add" onclick="addToCart('Nike Air Max 97 Gray/Black', 799)">Add to Cart</button></div>
+    </div>
+
+    <div id="jordan" class="products">
+        <h2>Jordan Shoes</h2>
+        <div class="item">Jordan 1 Travis Scott Fragment - $1999 <button class="add" onclick="addToCart('Jordan 1 Travis Scott Fragment', 1999)">Add to Cart</button></div>
+        <div class="item">Jordan 1 Travis Scott Olive - $2999 <button class="add" onclick="addToCart('Jordan 1 Travis Scott Olive', 2999)">Add to Cart</button></div>
+        <div class="item">Jordan Unisex Air 4 Retro Leather Synthetic White Fire Red Black - $1599 <button class="add" onclick="addToCart('Jordan Air 4 Retro', 1599)">Add to Cart</button></div>
+    </div>
+
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cartList"></ul>
+        <h3 id="total">Total: $0</h3>
+    </div>
+
+    <script>
+        function showProducts(type) {
+            document.getElementById('nike').style.display = 'none';
+            document.getElementById('jordan').style.display = 'none';
+            document.getElementById(type).style.display = 'block';
+        }
+
+        let total = 0;
+
+        function addToCart(name, price) {
+            const cartList = document.getElementById('cartList');
+            const item = document.createElement('li');
+            item.textContent = name + ' - $' + price;
+            cartList.appendChild(item);
+            total += price;
+            document.getElementById('total').innerText = 'Total: $' + total;
+        }
+    </script>
+
+</body>
+</html>
